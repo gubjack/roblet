@@ -1,3 +1,15 @@
+The Roblet Development Kit (RDK) is released under the GNU LESSER GENERAL PUBLIC LICENSE 2.1
+(see details below or https://opensource.org/licenses/LGPL-2.1), which is an open source license.
+I chose to use this license to make sure the software is free for all its users.
+
+However, I do restrict the use of the term "Roblet" and in this context "RDK" to insure interoperability and to avoid confusion.
+The reason for this is similiar to that of Java, OpenSSH or other software:
+A user expects somehow the libraries to be able to interact well defined independent of its versions and source.
+So if implementations of the roblet server environment, the client behaviour, the communication protocol or any other vital part
+differs from what is published via the GitHub repository gubjack/rdk it must be called differently.
+
+---
+
                   GNU LESSER GENERAL PUBLIC LICENSE
                        Version 2.1, February 1999
 
