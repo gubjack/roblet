@@ -1,1 +1,1 @@
-# rdk
+# Roblet Development Kit (rdk)
