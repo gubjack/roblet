@@ -5,12 +5,13 @@ I chose to use this license to make sure this software and its future versions a
 without urging anyone to publish the code using it.
 This is similar to using the GNU C library.
 
-In addition, however, I do restrict the use of the term "Roblet" and in this context "RDK"
+In addition, however, I do restrict the use of the terms "Roblet" and in this context "RDK"
 to insure interoperability and to avoid confusion.
-The reason for this is similiar to that of Java, OpenSSH or other software:
-A user expects somehow the libraries to be able to interact or behave well defined independent of its versions and source.
+Only for software from the central repository - currently the GitHub repository gubjack/rdk - the terms may be used.
+The reason for this is similiar to that of Java, OpenSSH, the Linux Kernel and other software:
+A user expects somehow the libraries to be able to interact or behave well defined independent of its version.
 So if implementations of the roblet server environment, the client behaviour, the communication protocol or any other vital part
-differs from what is published via the GitHub repository gubjack/rdk it must be called differently.
+differ from what is published via the central repository it must be called differently.
 
 Hagen Stanek, January 5th, 2018
 
