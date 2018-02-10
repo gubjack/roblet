@@ -5,11 +5,11 @@ package org.roblet;
 
 
 /**
- * Diese Schnittstelle charakterisiert <B>Roblet-Klassen</B>.&nbsp;
- * Instanzen einer solchen Klasse können einem Roblet-Server
- * übergeben und von ihm zum Laufen gebracht werden.
+ * This interface characterizes <B>roblet classes</B>.&nbsp;
+ * Instances of such a class can be handed over to a roblet server
+ * which in turn can run it.
  * <P>
- * Hier ein Beispiel für eine Roblet-Klasse:
+ * Here is an example of a roblet class:
  * <BLOCKQUOTE><PRE>
  * public class  MyRoblet
  *      <B>implements org.roblet.Roblet</B>
@@ -24,33 +24,40 @@ package org.roblet;
  *      // ...
  * }
  * </PRE></BLOCKQUOTE>
- * (Da Roblets meist über ein Netzwerk übertragen werden, muß zusätzlich
- * zu der hier beschriebenen Schnittstelle normalerweise noch
- * {@link java.io.Serializable} implementiert werden.)
+ * In this example the roblet class also implements
+ * {@link java.io.Serializable} since usually the roblet server
+ * is contacted via network.
  * 
- * <H3>Begriffsbestimmung</H3>
- * Roblet ist <I>der</I> zentrale Begriff der Roblet-Technik.&nbsp;
- * Der Begriff kann verschiedene Dinge bedeuten - in der Praxis ergibt
- * sich jedoch aus dem Zusammenhang die jeweilige Bedeutung.
- * <P>
- * Roblet<I>-Klassen</I> implementieren die hier beschriebene
- * Schnittstelle (s. obiges Beispiel).
- * <P>
- * Roblet<I>-Instanzen</I> werden in einer Anwendung zur Laufzeit
- * erzeugt und sind Java-Objekte in der JVM der Anwendung:
+ * <H3>Terminology</H3>
+ * Roblet is <I>the</I> central notion of the roblet technology.&npsp;
+ * In practice this term will be used for several different concepts.&nbsp;
+ * The context will make clear what is talked about.
+ * <OL>
+ *   <LI>Roblet <I>classes</I> implement the interface described here - as
+ *     shown in the example above.</LI>
+ *   <LI>>Roblet <I>objects</I> will be created by an application at runtime out
+ *     of a roblet class.&nbsp;
+ *     These are just Java objects possibly with certain attributes differing
+ *     from object ot object.
  * <BLOCKQUOTE><PRE>
  * MyRoblet  myRoblet = new MyRoblet ();
  * // ...
  * </PRE></BLOCKQUOTE>
- * <I>Roblet</I> bezeichnet schließlich die in der JVM eines Roblet-Servers
- * laufenden Java-Objekte.
- * <P>
- * Der Grund für eine Unterscheidung zwischen Roblet-Instanz und
- * (laufendem) Roblet ist die Tatsache, daß eine Roblet-Instanz
- * beliebig oft verschickt und damit beliebig oft zum Laufen gebracht
- * werden kann.&nbsp;
- * D.h. von einer Roblet-Klasse können mehrere Roblet-Instanzen und von
- * diesen jeweils mehrere Roblets erzeugt werden.
+ *   </LI>
+ *   <LI>The roblet <I>application</I> is the Java application in the JVM that
+ *     creates an roblet object.</LI>
+ *   <LI>The roblet <I>client</I> is a library that takes care of serializing
+ *     and sending roblet objects, handle the communication including the
+ *     results of a roblet.</LI>
+ *   <LI>A roblet <I>server</I> gets contacted by roblet clients, takes and
+ *     de-serializes the roblet objects and handles the communication with the
+ *     client.</LI>
+ *   <LI>A <I>roblet</I> finally is a roblet object that is run by a roblet
+ *     server.</LI>
+ * </UL>
+ * The reason for the differentiation between roblet object and a (running)
+ * roblet is the fact that any sinble object can be send arbitrarily often
+ * but will result in different (running) roblets always.
  * 
  * @see #execute(Robot)
  * @see Robot
@@ -59,6 +66,20 @@ package org.roblet;
 public interface  Roblet
 {
 
+    // TODO Kann beliebig lange laufen
+    // TODO Roblet endet, wenn keine von ihm gestarteten Threads mehr laufen
+    // (Threads von Einheiten werden nicht einberechnet.)
+    // Endet ein vom Roblet gestarteter Thread mit einer Ausnahme, so
+    // werden alle Threads des Roblets beendet - inklusive des Threads, der
+    // execute ausführt.  In diesem Fall wird die Ausnahme des auslösenden
+    // Threads zurückgegeben.
+    // Endet ein Roblet, so werden die Resourcen benutzer Einheiten
+    // automatisch wieder freigegeben.
+    // Der roblet server schränkt den Zugriff auf die Resourcen der
+    // JVM und des unterliegenden Systems nach Möglichkeit ein.
+    // Stattdessen müssen Einheiten benutzt werden.
+    // Nach Möglichkeit wird vom roblet server oder den Resourcen selbst
+    // eine Sicherheitsausnahme ausgelöst.
     /**
      * Ein Roblet wird vom Roblet-Server durch Aufruf dieser
      * Methode laufengelassen - quasi zum Leben erweckt.&nbsp;
