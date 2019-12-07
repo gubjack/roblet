@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: LGPL-2.1
-// (C) Copyright 2001-2018  Hagen Stanek
+// (C) Copyright Hagen Stanek. All rights reserved.
 
 package org.roblet;
 
