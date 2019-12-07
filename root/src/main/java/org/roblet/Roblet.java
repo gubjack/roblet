@@ -29,13 +29,13 @@ package org.roblet;
  * is contacted via network.
  * 
  * <H3>Terminology</H3>
- * Roblet is <I>the</I> central notion of the roblet technology.&npsp;
+ * Roblet is <I>the</I> central notion of the roblet technology.&nbsp;
  * In practice this term will be used for several different concepts.&nbsp;
  * The context will make clear what is talked about.
- * <OL>
+ * <UL>
  *   <LI>Roblet <I>classes</I> implement the interface described here - as
  *     shown in the example above.</LI>
- *   <LI>>Roblet <I>objects</I> will be created by an application at runtime out
+ *   <LI>Roblet <I>objects</I> will be created by an application at runtime out
  *     of a roblet class.&nbsp;
  *     These are just Java objects possibly with certain attributes differing
  *     from object ot object.
