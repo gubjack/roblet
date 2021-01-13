@@ -28,7 +28,7 @@ package org.roblet;
  * {@link java.io.Serializable} since usually the roblet server
  * is contacted via network.
  * 
- * <H3>Terminology</H3>
+ * <H2>Terminology</H2>
  * Roblet is <I>the</I> central notion of the roblet technology.&nbsp;
  * In practice this term will be used for several different concepts.&nbsp;
  * The context will make clear what is talked about.

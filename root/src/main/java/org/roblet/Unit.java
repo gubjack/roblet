@@ -11,7 +11,7 @@ package org.roblet;
  * Praxis ergibt sich jedoch aus dem Zusammenhang die jeweilige Bedeutung.
  * <P>
  * Einheiten<I>definitionen</I> sind Schnittstellen
- * (Java&trade;-<TT>interface</TT>), die die hier beschriebene
+ * (Java&trade;-<CODE>interface</CODE>), die die hier beschriebene
  * Schnittstelle <SPAN style="color:darkgreen">erweitern</SPAN>:
  * <BLOCKQUOTE><PRE>
  * public interface  MyUnit
