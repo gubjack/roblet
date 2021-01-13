@@ -1,5 +1,8 @@
-# Roblet Development Kit (RDK)
 
-The RDK is the basic software needed to have the server and/or client side of the Roblet technology work.
+# Roblet library
 
+This library is the basic software for using roblets.
+
+It consists of multiple Java archives.
+Currently only one is already present in this Git repository.
 * [root](root)
