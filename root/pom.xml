@@ -9,12 +9,12 @@
                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Naming -->
+
     <groupId>org.roblet</groupId>
     <artifactId>roblet-root</artifactId>
     <version>0.3-SNAPSHOT</version>
 
-    <!-- Basic settings -->
+
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,7 +26,7 @@
 
         <plugins>
 
-            <!-- Maven-Compile -->
+            <!-- compiler -->
             <plugin>
                 <!-- http://maven.apache.org/plugins/maven-compiler-plugin
                     last visited 2021-01-13 -->
@@ -35,7 +35,7 @@
                 <version>3.8.1</version>
             </plugin>
 
-            <!-- Maven-Source -->
+            <!-- sources -->
             <plugin>
                 <!-- http://maven.apache.org/plugins/maven-source-plugin
                     last visited 2021-01-13 -->
@@ -52,7 +52,7 @@
                 </executions>
             </plugin>
 
-            <!-- Maven-Javadoc -->
+            <!-- javadoc -->
             <plugin>
                 <!-- http://maven.apache.org/plugins/maven-javadoc-plugin
                     last visited 2021-01-13 -->
