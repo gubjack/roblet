@@ -1,21 +1,21 @@
-The Roblet Development Kit (RDK) is released under the terms similar to the GNU LESSER GENERAL PUBLIC LICENSE 2.1
-(LGPL, see details below or https://opensource.org/licenses/LGPL-2.1), which is an open source license.
-The LGPL below is copyrighted by the Free Software Foundation, but the RDK is copyrighted by me and contributors who actually wrote it.
-I chose to use this type of license to make sure this software and its future versions are public and free for all its users
+# License
+
+The Roblet library is released under the terms similar to the
+GNU LESSER GENERAL PUBLIC LICENSE 2.1 (LGPL, see details below or
+https://opensource.org/licenses/LGPL-2.1), which is an open source license.
+The LGPL below is copyrighted by the Free Software Foundation,
+but the Roblet library is copyrighted by me
+and contributors who actually wrote it.
+
+I chose to use this type of license to make sure this software and its future
+versions are public and free for all its users
 without urging anyone to publish the code using it.
-This is similar to using the GNU C library.
-So any Roblet code or Roblet server module or in general any interface implemented by users code
-is covered by the respective users chosen license and not by this one.
+This is similar to using the GNU C library or Java itself.
+So any Roblet code or Roblet server module or in general any interface
+implemented by users code is covered by the respective users chosen license
+and not by this one.
 
-In addition, however, I do restrict the use of the terms "Roblet" and in this context "RDK"
-to insure interoperability and to avoid confusion.
-Only for software from the central repository - currently the GitHub repository gubjack/rdk - the terms may be used.
-The reason for this is similiar to that of Java, OpenSSH, the Linux Kernel and other software:
-A user expects somehow the libraries to be able to interact or behave well defined independent of its version.
-So if implementations of the roblet server environment, the client behaviour, the communication protocol or any other vital part
-differ from what is published via the central repository it must be called differently.
-
-Hagen Stanek, January 6th, 2018
+Hagen Stanek, January 13th, 2020
 
 ---
 
