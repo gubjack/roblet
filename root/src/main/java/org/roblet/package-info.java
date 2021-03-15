@@ -24,21 +24,6 @@
 
 <HR>
 
-<H2 id='robot'>{@link org.roblet.Robot} - Kontext</H2>
-
-<P>
-    Einem <A href="#roblet">Roblet</A> wird im Roblet-Server beim
-    Ausführen der o.g. {@link org.roblet.Roblet#execute(Robot)}-Methode
-    eine Instanz vom Typ {@link org.roblet.Robot} übergeben.&nbsp;
-    Diese Instanz wird Kontext genannt.&nbsp;
-    Mit diesem Kontext kann das Roblet auf die vom Roblet-Server
-    bereitgestellten Ressourcen in Form von
-    <A href="#unit">Einheiten</A> zugreifen.&nbsp;
-    Der Zugriff auf diese Einheiten erfolgt mit der Methode
-    {@link org.roblet.Robot#getUnit(Class)}.
-</P>
-
-
 <H2 id='unit'>{@link org.roblet.Unit} - Einheiten</H2>
 
 <P>

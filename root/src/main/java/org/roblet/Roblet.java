@@ -108,9 +108,17 @@ public interface  Roblet
 </P>
 
 <P>
+    The roblet server may very tightly restrict the access to the
+    functionality given by the Java libraries.
+    If access is possible then normally via {@link Unit} implementations
+    that can be optained via {@link Robot#getUnit(Class)}.
+</P>
+
+<P>
     The amount of time this method takes is not limited.
-    Secondary {@link Thread}'s started by this method will keep the roblet
-    running in the server even if this method ends.
+    Secondary {@link Thread}'s started in the course of this method
+    will keep the roblet running in the server even if this method ends.
+    So a roblet ends as soon as it's last own thread ends.
 </P>
 
 <P>

@@ -5,17 +5,21 @@ package org.roblet;
 
 
 /**
- * Stellt den <B>Kontext</B> eines Roblets dar und
- * ermöglicht das Erfragen von Einheiten ({@link Unit}) eines
- * Roblet-Servers.&nbsp;
- * Der Name dieser Schnittstelle ist historisch bedingt - ein
- * Roblet-Server kann auch ganz allgemeine Dinge, wie Datei-Systeme,
- * Algorithmen u.v.a.m. mit Hilfe von Einheiten darstellen.
- * <p>
- * Jedem Roblet wird bei seiner Ausführung eine Instanz dieses Typs
- * übergeben (vgl. {@link Roblet#execute(Robot)}).&nbsp;
- * Es muß sich dabei nicht immer um die gleiche Instanz handeln.
- *
+ * Provides a context for a roblet allowing access to the roblet server
+ * controlled functionality.
+
+<P>
+    The accessible functionality can be obtained by calling
+    {@link #getUnit(Class)}.
+</P>
+
+<P>
+    The name <em>robot</em> of this interface is for historical reason
+    as the first implementation of a roblet server controlled a autonomous
+    mobil robot.
+    Only the following years the concept has been generalized.
+</P>
+
  * @see  #getUnit(Class)
  * @see  Roblet
  * @see  Unit
@@ -23,53 +27,33 @@ package org.roblet;
  */
 public interface  Robot
 {
-    
-    // TODO Roblet endet, wenn keine von ihm gestarteten Threads mehr laufen
-    // (Threads von Einheiten werden nicht einberechnet.)
-    // Endet ein Roblet, so werden die Resourcen benutzer Einheiten
-    // automatisch wieder freigegeben.
-    // Der roblet server schränkt den Zugriff auf die Resourcen der
-    // JVM und des unterliegenden Systems nach Möglichkeit ein.
-    // Stattdessen müssen Einheiten benutzt werden.
-    // Nach Möglichkeit wird vom roblet server oder den Resourcen selbst
-    // eine Sicherheitsausnahme ausgelöst.
+
     /**
-     * Zu einer Einheitendefinition wird eine zugehörige
-     * Instanz zurückgegeben.
-     * <P>
-     * Die Einheiten<I>definition</I> (vgl. {@link Unit})
-     * wird als Klasse übergeben.&nbsp;
-     * Die Klasse bekommt man durch Anhängen von {@code .class}.&nbsp;
-     * Z.B.:
-     * <BLOCKQUOTE><PRE>
-     * MyUnit<B>.class</B>
-     * </PRE></BLOCKQUOTE>
-     * <P>
-     * Man erhält bei Aufruf diese Methode eine Instanz der zugehörigen
-     * Einheiten<I>implementierung</I> zurück.&nbsp;
-     * Da jede Einheiten<I>definition</I> die Schnittstelle {@link Unit}
-     * erweitert, paßt der Typ der zurückgegebenen Instanz.
-     * <P>
-     * Ein Roblet muß stets prüfen, ob eine erfragte Einheit im
-     * Roblet-Server auch wirklich vorhanden ist.&nbsp;
-     * Ist dies nämlich nicht der Fall, so wird {@code null}
-     * zurückgegeben.&nbsp;
-     * Hier ein beispielhafte Verwendung
-     * <BLOCKQUOTE><PRE>
-     * public Object  execute (org.roblet.Robot robot)
-     *     throws Exception
-     * {
-     *     MyUnit  myUnit = (MyUnit) robot. getUnit (MyUnit.class);
-     *     <B>if (myUnit == null)</B>
-     *         throw new Exception ("MyUnit not available");
-     *     // ...
-     * }
-     * </PRE></BLOCKQUOTE>
-     *
-     * @param   rClass      Klasse der Einheitendefinition
-     * @return  Instanz der Einheitenimplementierung oder {@code null}
+     * Return the implemenation of some {@link Unit} definition as available
+     * in the underlying roblet server.
+
+<P>
+    Although unit definitions are interfaces they nevertheless result in classes
+    to be provided here.
+    So in case the implementation of some {@code MyUnit} interface is looked
+    for then the parameter would be {@code MyUnit.class}.
+</P>
+
+<P>
+    The result can be {@code null} for the case that the roblet server cannot
+    provide the implementation.
+    This should to be tested or at least taken into account.
+</P>
+
+<P>
+    There is no guarantee that two subsequent calls with the same
+    unit definition will result in the same unit implementation.
+</P>
+
+     * @param  definition  class of the unit interface definition
+     * @return  unit implementation or {@code null} if unavailable
      * @see  Roblet
      */
-    public Unit  getUnit (Class rClass);
+    public Unit  getUnit (Class definition);
 
 }

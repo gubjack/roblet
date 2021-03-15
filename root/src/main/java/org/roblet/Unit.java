@@ -4,6 +4,8 @@
 package org.roblet;
 
 
+// Endet ein Roblet, so werden die Resourcen benutzer Einheiten
+// automatisch wieder freigegeben.
 /**
  * Alle <B>Einheiten</B> der Roblet-Technik müssen von diesem Typ
  * sein.&nbsp;
