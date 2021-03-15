@@ -5,60 +5,88 @@ package org.roblet;
 
 
 /**
- * This interface characterizes <B>roblet classes</B>.&nbsp;
- * Instances of such a class can be handed over to a roblet server
+ * Instances of this kind can be handed over to a roblet server
  * which in turn can run it.
- * <P>
- * Here is an example of a roblet class:
- * <BLOCKQUOTE><PRE>
- * public class  MyRoblet
- *      <B>implements org.roblet.Roblet</B>
- *                  , java.io.Serializable
- * {
- *      public Object  execute (org.roblet.Robot robot)
- *      {
- *          Object  result = null;
- *          // ...
- *          return result;
- *      }
- *      // ...
- * }
- * </PRE></BLOCKQUOTE>
- * In this example the roblet class also implements
- * {@link java.io.Serializable} since usually the roblet server
- * is contacted via network.
- * 
- * <H2>Terminology</H2>
- * Roblet is <I>the</I> central notion of the roblet technology.&nbsp;
- * In practice this term will be used for several different concepts.&nbsp;
- * The context will make clear what is talked about.
- * <UL>
- *   <LI>Roblet <I>classes</I> implement the interface described here - as
- *     shown in the example above.</LI>
- *   <LI>Roblet <I>objects</I> will be created by an application at runtime out
- *     of a roblet class.&nbsp;
- *     These are just Java objects possibly with certain attributes differing
- *     from object ot object.
- * <BLOCKQUOTE><PRE>
- * MyRoblet  myRoblet = new MyRoblet ();
- * // ...
- * </PRE></BLOCKQUOTE>
- *   </LI>
- *   <LI>The roblet <I>application</I> is the Java application in the JVM that
- *     creates an roblet object.</LI>
- *   <LI>The roblet <I>client</I> is a library that takes care of serializing
- *     and sending roblet objects, handle the communication including the
- *     results of a roblet.</LI>
- *   <LI>A roblet <I>server</I> gets contacted by roblet clients, takes and
- *     de-serializes the roblet objects and handles the communication with the
- *     client.</LI>
- *   <LI>A <I>roblet</I> finally is a roblet object that is run by a roblet
- *     server.</LI>
- * </UL>
- * The reason for the differentiation between roblet object and a (running)
- * roblet is the fact that any sinble object can be send arbitrarily often
- * but will result in different (running) roblets always.
- * 
+
+<P>
+    To be send to the roblet server such an instance is serialized.
+    This way the instance variables will be available on server side.
+    To allow serialization the {@link java.io.Serializable} interface
+    needs to be implemented in addition.
+    Instance variables also need to do this.
+</P>
+
+<P>
+    An instance can be send multiple times to the same roblet server
+    or to different.
+    Instance variables can simply be changed before sending to a
+    roblet server when necessary.
+    Always the current state gets serialized and used on server side.
+</P>
+
+<P>
+    The roblet server deserializes to an instance and simply invokes
+    {@code #execute(Robot)}.
+    As part of this method all instance variables can be used.
+</P>
+
+<P>
+    To serialize and send roblet instances to a roblet server
+    a roblet client library needs to be used.
+</P>
+
+<H2>Example</H2>
+<P>
+    Here is an example of a <EM>roblet class</EM> (see terminology below):
+</P>
+<BLOCKQUOTE><PRE>
+public class  MyRoblet
+     <B>implements org.roblet.Roblet</B>
+                 , java.io.Serializable
+{
+     public boolean  variable;
+     public Object  execute (org.roblet.Robot robot)
+     {
+         if (variable)
+             // ...
+         Object  result = null;
+         // ...
+         return result;
+     }
+     // ...
+}
+</PRE></BLOCKQUOTE>
+
+<H2>Terminology</H2>
+<P>
+    Roblet is <I>the</I> central notion of the roblet technology.
+    In practice this term will be used for several different concepts.
+    The context will make clear what is talked about.
+</P>
+<UL>
+    <LI>Roblet <I>classes</I> implement the interface described here - as
+        shown in the example above.</LI>
+    <LI>Roblet <I>instances</I> will be created by an application at runtime
+        out of a roblet class.
+        These are just Java objects possibly with certain variables
+        differing from instance to instance.
+        <BLOCKQUOTE><PRE>
+MyRoblet  myRoblet = new MyRoblet ();
+// ...
+        </PRE></BLOCKQUOTE>
+    </LI>
+    <LI>The roblet <I>application</I> is the Java application in the JVM
+        that creates roblet instances.</LI>
+    <LI>The roblet <I>client</I> is a library that takes care of serializing
+        and sending roblet instances. It handles the communication including
+        the results of the execution of a roblet instance.</LI>
+    <LI>A roblet <I>server</I> gets contacted by roblet clients, takes,
+        de-serializes and executes the roblet instances
+        and handles the communication with the client.</LI>
+    <LI>A <I>roblet</I> finally is a de-serialized roblet instance that is
+        executed by a roblet server.</LI>
+</UL>
+
  * @see #execute(Robot)
  * @see Robot
  * @author Hagen Stanek

@@ -2,57 +2,27 @@
 // (C) Copyright Hagen Stanek. All rights reserved.
 
 /**
- * 
-
-Hier sind die zentralen <B>Schnittstellen</B> der Roblet-Technik
-enthalten.
-
+ * This package contains {@code interfaces} essential to the roblet world.
 
 <HR>
 
 <P>
-    Im Rahmen der Roblet-Technik werden einige Definitionen benötigt,
-    die in allen Teilen einer verteilten Anwendung auf dieser Basis
-    gleich sein müssen.&nbsp;
-    Diese Definitionen sind Java&trade;-Schnittstellen
-    ({@code interface}-Klassen).&nbsp;
-    Sie werden an anderer Stelle implementiert bzw. deren Implementierungen
-    erwartet.&nbsp;
-    Diese Schnittstellen sind hier zusammengefaßt.
-</P>
-
-
-<H2 id='roblet'>{@link org.roblet.Roblet} - Roblet-Schnittstelle</H2>
-
-<P>
-    Will eine Anwendung eine gewünschte Funktionalität auf einem
-    Roblet-Server ausführen, so muß sie eine Klasse erstellen,
-    die die Java&trade;-Schnittstelle {@link org.roblet.Roblet}
-    implementiert<SUP>1</SUP>.&nbsp;
-    Zur Laufzeit können in der Anwendung bei Bedarf (beliebig viele,
-    auch verschiedene) Instanzen von solchen Klassen erzeugt
-    werden<SUP>2</SUP>.&nbsp;
-    Diese Instanzen können jederzeit zu einem Roblet-Server
-    geschickt werden.&nbsp;
-    Dort werden sie dann ausgeführt.<SUP>3</SUP>
+    The context of roblets are distributed applications.
+    Such applications have components running on different network components.
+    In this context a couple of definitions are necessary
+    that need to be the same in all such distributed components.
+    And they can be found here.
 </P>
 
 <P>
-    Aus einer Roblet-Instanz wird vom Roblet-Server durch Ausführen der
-    Methode {@link org.roblet.Roblet#execute(Robot)} ein Roblet.&nbsp;
-    Die genannte  Methode wird vom Entwickler der Roblet-Klasse
-    als Teil der Anwendung bereitgestellt.&nbsp;
-    Die Methode ist vergleichbar mit der Methode {@code main(...)} einer
-    normalen Java&trade;-Anwendung.
+    This package defines {@code interface} classes only.
+    They are implemented as part of the roblet libraries
+    or need to be implemented by using applications.
+    The central definition is the {@link Roblet}.
 </P>
 
-<P>
-    Eine Anwendung versendet Roblet-Instanzen mit Hilfe eines
-    Roblet-Klienten.&nbsp;
-    Ein Roblet-Klienten ist eine Instanz von
-    <CODE>genRob.genControl.client.Client</CODE>.
-</P>
 
+<HR>
 
 <H2 id='robot'>{@link org.roblet.Robot} - Kontext</H2>
 
