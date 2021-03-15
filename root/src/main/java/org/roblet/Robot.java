@@ -24,6 +24,15 @@ package org.roblet;
 public interface  Robot
 {
     
+    // TODO Roblet endet, wenn keine von ihm gestarteten Threads mehr laufen
+    // (Threads von Einheiten werden nicht einberechnet.)
+    // Endet ein Roblet, so werden die Resourcen benutzer Einheiten
+    // automatisch wieder freigegeben.
+    // Der roblet server schränkt den Zugriff auf die Resourcen der
+    // JVM und des unterliegenden Systems nach Möglichkeit ein.
+    // Stattdessen müssen Einheiten benutzt werden.
+    // Nach Möglichkeit wird vom roblet server oder den Resourcen selbst
+    // eine Sicherheitsausnahme ausgelöst.
     /**
      * Zu einer Einheitendefinition wird eine zugehörige
      * Instanz zurückgegeben.
