@@ -1,10 +1,8 @@
-<!--
-    SPDX-License-Identifier: LGPL-2.1
-    (C) Copyright Hagen Stanek. All rights reserved.
--->
-<HTML>
-<BODY>
+// SPDX-License-Identifier: LGPL-2.1
+// (C) Copyright Hagen Stanek. All rights reserved.
 
+/**
+ * 
 
 Hier sind die zentralen <B>Schnittstellen</B> der Roblet-Technik
 enthalten.
@@ -206,6 +204,7 @@ enthalten.
     wie die Implementierung im Server platziert wird.
 </SMALL>
 
-
-</BODY>
-</HTML>
+ *
+ * @author Hagen Stanek
+ */
+package org.roblet;
