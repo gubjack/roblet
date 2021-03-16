@@ -4,21 +4,21 @@
 /**
  * This package contains definitions essential to the roblet world.
 
-<HR>
-
 <P>
-    The context of roblets are distributed applications.
+    Roblets are used in distributed applications.
     Such applications have components running on different network components.
-    In this context a couple of definitions are necessary
+    To make it work a couple of definitions are necessary
     that need to be the same in all such distributed components.
-    And they can be found here.
+    And the most visible to the developer can be found here.
 </P>
 
 <P>
     This package defines {@code interface} classes only.
     They are implemented as part of the roblet libraries
-    or need to be implemented by using applications.
-    The central definition is the {@link Roblet}.
+    or need to be implemented by using applications
+    or functionality providers.
+    The central definition and a good point to start reading
+    is the {@link Roblet}.
 </P>
 
 
