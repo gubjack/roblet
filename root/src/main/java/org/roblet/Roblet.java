@@ -16,22 +16,23 @@ package org.roblet;
 </P>
 
 <P>
+    To serialize and send roblet instances to a roblet server
+    the roblet client library needs to be used.
+</P>
+
+<P>
     An instance can be send multiple times to the same roblet server
     or to different.
-    Instance variables can simply be changed before sending to a
+    Instance variables can be changed before sending to a
     roblet server when necessary.
-    Always the current state gets serialized and used on server side.
+    Always the current instance state gets serialized by the
+    client library and executed in the server server.
 </P>
 
 <P>
-    The roblet server deserializes to an instance and simply invokes
+    The roblet server de-serializes to an instance and invokes
     {@link #execute(Robot)}.
-    As part of this method all instance variables can be used.
-</P>
-
-<P>
-    To serialize and send roblet instances to a roblet server
-    a roblet client library needs to be used.
+    As part of the mentioned method all instance variables can be used.
 </P>
 
 <H2>Example</H2>
@@ -43,22 +44,28 @@ public class  MyRoblet
      <B>implements org.roblet.Roblet</B>
                  , java.io.Serializable
 {
-     public boolean  variable;
-     public Object  execute (org.roblet.Robot robot)
-     {
-         if (variable)
-             // ...
-         Object  result = null;
-         // ...
-         return result;
-     }
-     // ...
+    public boolean  variable;
+    public Object  execute (org.roblet.Robot robot)
+        throws Exception
+    {
+        if (variable)
+            // ...
+
+        MyUnit  myUnit = (MyUnit) robot. getUnit (MyUnit.class);
+        if (myUnit == null)
+            throw new Exception ("Didn't find MyUnit!");
+
+        Object  result = null;
+        // ...
+        return result;
+    }
+    // ...
 }
 </PRE></BLOCKQUOTE>
 
 <H2>Terminology</H2>
 <P>
-    Roblet is <I>the</I> central notion of the roblet technology.
+    Roblet is <I>the</I> central notion of the roblet libraries.
     In practice this term will be used for several different concepts.
     The context will make clear what is talked about.
 </P>
@@ -71,6 +78,7 @@ public class  MyRoblet
         differing from instance to instance.
         <BLOCKQUOTE><PRE>
 MyRoblet  myRoblet = new MyRoblet ();
+myRoblet. variable = true;
 // ...
         </PRE></BLOCKQUOTE>
     </LI>
@@ -88,6 +96,7 @@ MyRoblet  myRoblet = new MyRoblet ();
 
  * @see #execute(Robot)
  * @see Robot
+ * @see Unit
  * @author Hagen Stanek
  */
 public interface  Roblet
