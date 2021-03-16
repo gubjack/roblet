@@ -5,8 +5,7 @@ package org.roblet;
 
 
 /**
- * Instances of this kind can be handed over to a roblet server
- * which in turn can run it.
+ * Instances of this kind <B>can be run by a roblet server</B>.
 
 <P>
     To be send to the roblet server such an instance is serialized.

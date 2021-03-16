@@ -2,7 +2,7 @@
 // (C) Copyright Hagen Stanek. All rights reserved.
 
 /**
- * This package contains {@code interfaces} essential to the roblet world.
+ * This package contains definitions essential to the roblet world.
 
 <HR>
 

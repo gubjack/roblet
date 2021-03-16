@@ -5,7 +5,7 @@ package org.roblet;
 
 
 /**
- * Provides a context for a roblet allowing access to the roblet server
+ * Provides a <B>context for a roblet</B> allowing access to the roblet server
  * controlled functionality.
 
 <P>
@@ -15,7 +15,7 @@ package org.roblet;
 
 <P>
     The name <em>robot</em> of this interface is for historical reason
-    as the first implementation of a roblet server controlled a autonomous
+    as the first implementation of a roblet server controlled an autonomous
     mobil robot.
     Only the following years the concept has been generalized.
 </P>
@@ -42,12 +42,12 @@ public interface  Robot
 <P>
     The result can be {@code null} for the case that the roblet server cannot
     provide the implementation.
-    This should to be tested or at least taken into account.
+    This should be tested or at least taken into account.
 </P>
 
 <P>
     There is no guarantee that two subsequent calls with the same
-    unit definition will result in the same unit implementation.
+    unit definition will result in the same unit implementation being returned.
 </P>
 
      * @param  definition  class of the unit interface definition
