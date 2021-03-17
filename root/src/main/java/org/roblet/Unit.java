@@ -4,55 +4,117 @@
 package org.roblet;
 
 
-// Endet ein Roblet, so werden die Resourcen benutzer Einheiten
-// automatisch wieder freigegeben.
 /**
- * Alle <B>Einheiten</B> der Roblet-Technik müssen von diesem Typ
- * sein.&nbsp;
- * Der Begriff <I>Einheiten</I> kann verschiedene Dinge bedeuten - in der
- * Praxis ergibt sich jedoch aus dem Zusammenhang die jeweilige Bedeutung.
- * <P>
- * Einheiten<I>definitionen</I> sind Schnittstellen
- * (Java&trade;-<CODE>interface</CODE>), die die hier beschriebene
- * Schnittstelle <SPAN style="color:darkgreen">erweitern</SPAN>:
- * <BLOCKQUOTE><PRE>
- * public interface  MyUnit
- *      <B><SPAN style="color:darkgreen">extends</SPAN> org.roblet.Unit</B>
- * {
- *     public int  sampleMethod ();
- *     // ...
- * }
- * </PRE></BLOCKQUOTE>
- * Eine Einheiten<I>implementierung</I> ist demgegenüber eine Klasse,
- * die eine Einheitendefinition
- * <SPAN style="color:darkred">implementiert</SPAN>:
- * <BLOCKQUOTE><PRE>
- * class  MyUnitImpl
- *      <B><SPAN style="color:darkred">implements</SPAN> MyUnit</B>
- * {
- *     public int  sampleMethod ()
- *     {
- *         return 42;
- *     }
- *     // ...
- * }
- * </PRE></BLOCKQUOTE>
- * Implementierungen sind in Roblet-Servern zu finden.&nbsp;
- * Ein {@link Roblet} kann über seinen {@link Robot} eine Einheit unter
- * Angabe einer Einheitendefintion anfordern.&nbsp;
- * Der Roblet-Server gibt dann die <I>Instanz</I> einer
- * Einheitendefinition zurück.
- * <P style="font-size:smaller">
- * Eigentlich bräuchte man einen derartigen Typ nicht, um Einheiten
- * zu definieren, zu implementieren und anzuwenden.&nbsp;
- * Dennoch hat sich in der Praxis gezeigt, daß durch die mit diesem Typ
- * verbundene Vorschrift der Erweiterung/Ableitung,
- * viele Methoden anderer Klassen
- * klarer in ihren Parametern und Rückgabewerten sind.&nbsp;
- * Damit wird dann auch die Dokumentation und das Verständnis der
- * Roblet-Technik einfacher und klarer.
- * </P>
- * 
+ * <B>Functionality controlled by a roblet server</B> is of this type.
+
+<P>
+    This {@code interface} serves to identify the functionality in question.
+    Any actual definition and implementation will provide the real function.
+    See below for terminology, contract and versioning.
+</P>
+
+<P style="font-size:smaller">
+    In a strict sense this type is not needed.
+    But the experience is that by having this type
+    any dicussion, code reading and quality improves.
+</P>
+
+<H2>Terminology</H2>
+
+<UL>
+    <LI>
+        Unit <I>definitions</I> are {@code interface} classes with
+        actual functionality specifyed in methods
+        by <SPAN style="color:darkgreen">extending</SPAN> this type:
+        <BLOCKQUOTE><PRE>
+public interface  MyUnit
+    <B><SPAN style="color:darkgreen">extends</SPAN> org.roblet.Unit</B>
+{
+    // Answer to the Ultimate Question of Life,
+    // the Universe, and Everything
+    public int  calculate ();
+}
+        </PRE></BLOCKQUOTE>
+    </LI>
+
+    <LI>
+        Unit <I>implementations</I> really provide a functionality 
+        as part of a roblet server and need to
+        <SPAN style="color:darkred">implement</SPAN> the <I>definition</I>:
+        <BLOCKQUOTE><PRE>
+class  MyUnitImpl
+     <B><SPAN style="color:darkred">implements</SPAN> MyUnit</B>
+{
+    public int  calculate ()
+    {
+        return 42;
+    }
+}
+        </PRE></BLOCKQUOTE>
+    </LI>
+
+    <LI>
+        Unit <I>instances</I> of an implementation
+        are obtained by an interested {@link Roblet} 
+        using {@link Robot#getUnit(Class)}:
+        <BLOCKQUOTE><PRE>
+public class  MyRoblet
+     implements org.roblet.Roblet, java.io.Serializable
+{
+    public Object  execute (org.roblet.Robot robot)
+        throws Exception
+    {
+        MyUnit  <B>myUnit</B> = (MyUnit) robot. getUnit (MyUnit.class);
+        int  answer = <B>myUnit. calculate ()</B>;
+        return answer;
+    }
+}
+        </PRE></BLOCKQUOTE>
+    </LI>
+</UL>
+
+<H2>Contract</H2>
+<P>
+    In case a roblet ends any ressources hold by a unit instance will be
+    freed by the roblet server automatically.
+</P>
+
+<H2>Versioning</H2>
+<P>
+    Once a unit definition has been published to external (unknown) users
+    changes should be avoided as otherwise using roblets will not compile
+    anymore or will behave differently in the roblet server.
+    In addition if a third party is implementing a unit definition similar
+    problems would come up.
+</P>
+<P>
+    But further devopment of unit definitions can simply be done by
+    providing new definitions with new names.
+    Good experience has been made with just adding a number
+    to the new unit definition name.
+</P>
+<P>
+    It is also technically well possible to {@code extend} unit definitions
+    to add new methods:
+</P>
+<BLOCKQUOTE><PRE>
+public interface  MyUnit2
+    <B>extends</B> MyUnit
+{
+    public String  newMethod ();
+}
+</PRE></BLOCKQUOTE>
+<P>
+    This way a roblet server could provide the same unit instance for
+    roblets using either definition:
+</P>
+<BLOCKQUOTE><PRE>
+MyUnit  myUnit = (MyUnit) robot. getUnit (MyUnit.class);
+MyUnit2  myUnit2 = (MyUnit2) robot. getUnit (MyUnit2.class);
+assert (myUnit. calculate () == myUnit2. calculate ());
+</PRE></BLOCKQUOTE>
+
+ * @see Robot#getUnit(Class)
  * @author Hagen Stanek
  */
 public interface  Unit

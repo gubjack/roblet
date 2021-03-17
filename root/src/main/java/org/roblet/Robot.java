@@ -13,7 +13,7 @@ package org.roblet;
     {@link #getUnit(Class)}.
 </P>
 
-<P>
+<P style="font-size:smaller">
     The name <em>robot</em> of this interface is for historical reason
     as the first implementation of a roblet server controlled an autonomous
     mobil robot.
