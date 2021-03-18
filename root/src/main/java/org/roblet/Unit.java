@@ -64,7 +64,7 @@ public class  MyRoblet
     public Object  execute (org.roblet.Robot robot)
         throws Exception
     {
-        MyUnit  <B>myUnit</B> = (MyUnit) robot. getUnit (MyUnit.class);
+        MyUnit  <B>myUnit</B> = robot. getUnit (MyUnit.class);
         int  answer = <B>myUnit. calculate ()</B>;
         return answer;
     }
@@ -109,8 +109,8 @@ public interface  MyUnit2
     roblets using either definition:
 </P>
 <BLOCKQUOTE><PRE>
-MyUnit  myUnit = (MyUnit) robot. getUnit (MyUnit.class);
-MyUnit2  myUnit2 = (MyUnit2) robot. getUnit (MyUnit2.class);
+MyUnit  myUnit = robot. getUnit (MyUnit.class);
+MyUnit2  myUnit2 = robot. getUnit (MyUnit2.class);
 assert (myUnit. calculate () == myUnit2. calculate ());
 </PRE></BLOCKQUOTE>
 
@@ -119,4 +119,6 @@ assert (myUnit. calculate () == myUnit2. calculate ());
  */
 public interface  Unit
 {
+    // no attributes nor methods
+    // just a marker interface
 }

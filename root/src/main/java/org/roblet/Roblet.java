@@ -51,7 +51,7 @@ public class  MyRoblet
         if (variable)
             // ...
 
-        MyUnit  myUnit = (MyUnit) robot. getUnit (MyUnit.class);
+        MyUnit  myUnit = robot. getUnit (MyUnit.class);
         if (myUnit == null)
             throw new Exception ("Didn't find MyUnit!");
 

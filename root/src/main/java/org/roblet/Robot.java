@@ -44,7 +44,7 @@ public interface  Robot
     for then the parameter would be {@code MyUnit.class}.
 </P>
 <BLOCKQUOTE><PRE>
-MyUnit  myUnit = (MyUnit) robot. getUnit (MyUnit.class);
+MyUnit  myUnit = robot. getUnit (MyUnit.class);
 if (myUnit == null)
     // ...
 // ...
