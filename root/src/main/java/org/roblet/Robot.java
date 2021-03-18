@@ -61,10 +61,12 @@ if (myUnit == null)
     unit definition will result in the same unit instance being returned.
 </P>
 
-     * @param  definition  class of the unit definition
+     * @param  <U>  unit definition
+     *              - an {@code interface} that extends {@link Unit}
+     * @param  unit  interface {@code class} of the unit definition
      * @return  unit instance or {@code null} if unavailable
      * @see  Roblet
      */
-    public Unit  getUnit (Class definition);
+    public <U extends Unit> U  getUnit (Class<U> unit);
 
 }
