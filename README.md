@@ -7,4 +7,4 @@ It consists of multiple Java archives.
 Currently only one is already present in this Git repository.
 * [root](root)
 
-[license](license.md)
+[license](LICENSE.md)
