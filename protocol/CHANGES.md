@@ -1,7 +1,7 @@
 
 # Changes
 
-## 0.3-SNAPSHOT
+## 1.0
 * [License text](../LICENSE.md) now in the higher level directory
 * SPDX-License-Identifier: **LGPL-2.1**
 * Change to **Java 11** including Maven plugin updates
