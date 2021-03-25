@@ -1,5 +1,5 @@
 
-# README for the library roblet-root
+# Library roblet-root
 
 This library contains the very basic definitions needed by other libraries
 of the roblet world.
