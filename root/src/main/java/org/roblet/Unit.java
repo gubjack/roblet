@@ -117,8 +117,4 @@ assert (myUnit. calculate () == myUnit2. calculate ());
  * @see Robot#getUnit(Class)
  * @author Hagen Stanek
  */
-public interface  Unit
-{
-    // no attributes nor methods
-    // just a marker interface
-}
+public interface  Unit {}
