@@ -138,13 +138,6 @@ public interface  Roblet <RESULT>
 </P>
 
 <P>
-    For an application sending a roblet instance using the client library
-    it means that the result handed back only needs to be casted suitably
-    by using the <I>cast</I> operator "{@code (class name)}".
-    In our example this would be {@code (String[])}.
-</P>
-
-<P>
     A roblet execution may also result in an exception of type
     {@link Exception}.
     Such an will be transferred back to the application.
