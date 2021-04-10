@@ -94,12 +94,13 @@ myRoblet. variable = true;
         executed by a roblet server.</LI>
 </UL>
 
+ * @param <RESULT>  result type of {@link #execute(Robot)}
  * @see #execute(Robot)
  * @see Robot
  * @see Unit
  * @author Hagen Stanek
  */
-public interface  Roblet
+public interface  Roblet <RESULT>
 {
 
     /**
@@ -168,7 +169,7 @@ public interface  Roblet
      *                  including {@code null}
      * @throws  Exception  any but {@link java.io.Serializable}
      */
-    public Object  execute (Robot robot)
+    public RESULT  execute (Robot robot)
         throws Exception;
 
 }
