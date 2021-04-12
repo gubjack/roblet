@@ -46,14 +46,13 @@ public class  MyRoblet
 {
     public boolean  variable;
     public Object  execute (org.roblet.Robot robot)
-        throws Exception
     {
         if (variable)
             // ...
 
         MyUnit  myUnit = robot. getUnit (MyUnit.class);
         if (myUnit == null)
-            throw new Exception ("Didn't find MyUnit!");
+            throw new RuntimeException ("Didn't find MyUnit!");
 
         Object  result = null;
         // ...
@@ -125,44 +124,41 @@ public interface  Roblet <RESULT>
 
 <P>
     The amount of time this method takes is not limited.
-    Secondary {@link Thread}'s started in the course of this method
-    will keep the roblet running in the server even if this method ends.
-    So a roblet ends as soon as it's last own thread ends.
+    Secondary {@link Thread}'s may be started in the course of this method.
+    The thread of this method and the secondary threads
+    are said to belong to the roblet.
 </P>
 
 <P>
-    The result of this method may be any Java object but needs to be
+    A roblet ends as soon as it's last belonging thread ends.
+    So secondary {@link Thread}'s will keep the roblet running in the server
+    even if the method described here ends.
+</P>
+
+<P>
+    The result of this method may be any Java object but should be
     {@link java.io.Serializable}.
-    This e.g. comprises arrays like {@code String[]}.
-    Also {@code null} is valid result.
+    It is worth mentioning that this comprises arrays like {@code String[]}.
+    And also {@code null} is a valid result.
 </P>
 
 <P>
-    A roblet execution may also result in an exception of type
-    {@link Exception}.
-    Such an will be transferred back to the application.
-    As the client will re-throw them the application can handle them the
-    normaly way by catching.
+    In case of an uncaught exception in any thread belonging to the roblet
+    the roblet server will end the roblet.
+    All threads of the roblet will end at once.
 </P>
 
 <P>
-    In case of an exception in a secondary thread that is not caught
-    the roblet server will end this and all other threads of the roblet.
-</P>
-
-<P>
-    Usually exceptions are {@link java.io.Serializable}
-    but in case not the roblet server will instead transfer an exception to
-    the application telling that problem.
+    The server will transfer the exception back to the application
+    allowing the client to re-throw.
+    This way the application can handle such exception as usual by catching.
 </P>
 
      * @param   robot  to access server controlled functionality
      *                  - never {@code null}
      * @return  any instance but {@link java.io.Serializable}
      *                  including {@code null}
-     * @throws  Exception  any but {@link java.io.Serializable}
      */
-    public RESULT  execute (Robot robot)
-        throws Exception;
+    public RESULT  execute (Robot robot);
 
 }
