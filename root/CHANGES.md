@@ -1,6 +1,14 @@
 
 # Changes
 
+## 2
+* License and other roblet libraries linked to [README](README.md)
+* Interface `org.roblet.Remote` added
+* `org.roblet.Roblet` now with generic execution result
+* *Revised exception handling*
+    * now only <CODE>RuntimeException</CODE> via any thread
+    * and any exception in any thread (**including primary**) ends a roblet
+
 ## 1.0
 * Moved to Github
 * [License text](../LICENSE.md) now in the higher level directory
