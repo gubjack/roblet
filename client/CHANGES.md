@@ -1,6 +1,11 @@
 
 # Changes
 
+## 5.1
+* SPDX-License-Identifier: **LGPL-2.1** - [License text](../LICENSE.md)
+* Turned into a **Java module**
+* Moved to Github
+
 ## 5
 * *Bug fix*: Failing IO during re-connection must not end the retry loop
 * revised logging
