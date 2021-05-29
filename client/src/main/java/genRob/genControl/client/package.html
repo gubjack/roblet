@@ -1,0 +1,43 @@
+<!--
+	SPDX-License-Identifier: LGPL-2.1
+	(C) Copyright Hagen Stanek. All rights reserved.
+-->
+
+<HTML>
+
+<BODY>
+
+Hier sind wesentliche Teile dessen,
+was für das
+<SPAN style="color:brown"><b>Senden und Verwalten von Roblets</b></SPAN>
+benötigt wird.
+
+
+<HR>
+
+<P>
+Von Zentraler Bedeutung ist die Klasse
+{@link genRob.genControl.client.Client}.&nbsp;
+Instanzen von ihr stellen Klienten dar und sind die Basis für die
+Kommunikation einer Anwendung mit Roblet-Servern.&nbsp;
+<I>Pro Anwendung wird i.d.R. nur eine Klienten-Instanz genötigt.</I>
+
+<P>
+Bei der Instanziierung eines Klienten kann festgelegt werden, ob
+Log-Ausgaben des Klienten entgegengenommen werden
+(vgl. {@link genRob.genControl.client.Client#Client(Log)}).&nbsp;
+Die Log-Ausgaben werden mit Hilfe der Java&trade;-Eigenschaft
+<CODE>genRob.genControl.client.log</CODE> gesteuert.&nbsp;
+Siehe {@link genRob.genControl.client.Log}
+hinsichtlich der definierten Schlüsselworte.
+
+<P>
+Alle von einem Klienten verwalteten Threads sind Dämonen und
+haben eine Priorität gleich des Klient-initialisierenden Threads.&nbsp;
+Allerdings ist es möglich, daß von dieser Bibliothek benutzte
+fremde Bibliotheken (z.B. RMI) Threads mit anderen Prioritäten und
+Dämon-Eigenschaften erzeugen.
+
+
+</BODY>
+</HTML>

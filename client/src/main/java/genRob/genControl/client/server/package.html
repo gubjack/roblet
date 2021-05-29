@@ -1,0 +1,38 @@
+<!--
+    SPDX-License-Identifier: LGPL-2.1
+    (C) Copyright Hagen Stanek. All rights reserved.
+-->
+
+<body>
+
+<!--
+<p>
+Hier sind die <b>Standardkommunikationswege</b> für
+Roblet®-Anwendungen zu den Roblet®-Servern inklusive zugehöriger
+<b>Einheiten</b> zu finden.
+-->
+Hier sind <b>server-seitig benötigte Klassen</b> zu finden.
+
+<!--
+<p>
+Der Zugriff auf einen Roblet®-Server wird durch
+<a href="Slots.html"><code>Slots</code></a>
+ermöglicht.&nbsp;
+Er erlaubt den parallelen Ablauf von Roblets®.&nbsp;
+Um Besitzrechte kümmert sich gegebenenfalls die Einheit
+<a href="Owner.html"><code>Owner</code></a>.
+-->
+
+<p>
+Bleibt ein Fehler innerhalb eines Threads eines Roblets® unabgefangen, so
+wird eine Ausnahme vom Typ
+<a href="ExecutionException.html"><code>ExecutionException</code></a>
+mit der entsprechenden Ausnahme als Verkettung ausgelöst.&nbsp;
+<!--
+Wird ein Roblet® beendet, weil ein anderes den Besitz einer
+Einheit erstritt, so wird für das verlierende Roblet® eine
+<a href="OwnerException.html"><code>OwnerException</code></a>
+geworfen.
+-->
+
+</body>
