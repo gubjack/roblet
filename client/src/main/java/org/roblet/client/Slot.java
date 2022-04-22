@@ -135,6 +135,16 @@ public class  Slot
     {
         slot. close ();
     }
+    /**
+     * Causes the calling thread to wait for the slot to close.
+     * @throws InterruptedException
+     *              in case the calling thread has been interrupted
+     */
+    public void  waitClosed ()
+        throws InterruptedException
+    {
+        slot. waitClosed ();
+    }
 
     /**
      * Send a roblet to the server that is then executing it.

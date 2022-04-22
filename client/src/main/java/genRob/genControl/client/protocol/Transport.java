@@ -207,6 +207,7 @@ public class  Transport
                 return;
             }
             m_rSlotException = rSlotException;
+            synchronized (closed) { closed. notifyAll (); }
 
             disconnect ();
 
@@ -220,8 +221,9 @@ public class  Transport
                 mf_rLogger. transport (this, "close () end");
         }
     }
+    private final Object  closed = new Object ();
 
-    private SlotException  m_rSlotException = null;
+    private volatile SlotException  m_rSlotException = null;
     /**
      * Test if a transport is closed due to server denial.
      * @throws SlotException  in case the server denies the transport
@@ -232,6 +234,15 @@ public class  Transport
         if (m_rSlotException == null)
             return;
         throw m_rSlotException;
+    }
+    public void  waitClosed ()
+        throws InterruptedException
+    {
+        synchronized (closed)
+        {
+            while (m_rSlotException == null)    // catch spurious wakeups
+                closed. wait ();
+        }
     }
 
 

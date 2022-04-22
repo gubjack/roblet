@@ -90,6 +90,12 @@ class  SlotImpl
         mf_rTransport. close (new SlotException ("slot forced to close"));
     }
 
+    public void  waitClosed ()
+        throws InterruptedException
+    {
+        mf_rTransport. waitClosed ();
+    }
+
 
     // Slot
     public <RESULT> RESULT  run (Roblet<RESULT> rRoblet)

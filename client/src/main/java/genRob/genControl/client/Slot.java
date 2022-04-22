@@ -37,6 +37,8 @@ public interface  Slot
 {
 
     public void  close ();
+    public void  waitClosed ()
+        throws InterruptedException;
 
     /**
      * <B>Platziert</B> eine Roblet-Instanz in diesem Fach des Roblet-Servers,
