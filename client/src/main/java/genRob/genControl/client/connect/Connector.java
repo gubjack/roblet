@@ -3,7 +3,6 @@
 
 package genRob.genControl.client.connect;
 
-import  genRob.genControl.client.Server;
 import  genRob.genControl.client.base.ServerImpl;
 import  genRob.genControl.client.protocol.Transport;
 import  genRob.genControl.client.protocol.TransportContext;
@@ -21,7 +20,6 @@ import org.roblet.server.unit.net.Socket;
  * @see #getServer()
  * @author Hagen Stanek
  */
-@SuppressWarnings("deprecation")
 public class  Connector
 {
 
@@ -42,7 +40,7 @@ public class  Connector
      * @return  server representation
      * @throws IOException  in case communication with the server failed
      */
-    public Server  getServer ()
+    public ServerImpl  getServer ()
         throws IOException
     {
         // Besorge mir eine Socket
@@ -92,7 +90,7 @@ public class  Connector
         }
     }
 
-    private Server  connectServer (Socket rSocket)
+    private ServerImpl  connectServer (Socket rSocket)
         throws IOException
     {
         Tube  rTube = mf_rConnectContext. createTube (rSocket);

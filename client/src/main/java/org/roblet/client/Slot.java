@@ -9,6 +9,7 @@ import org.roblet.Robot;
 import org.roblet.server.unit.net.NetUnit;
 
 import genRob.genControl.client.Client;
+import genRob.genControl.client.base.ServerImpl;
 
 
 /**
@@ -116,7 +117,16 @@ public class  Slot
         for (;;)
             try
             {
-                slot = c. getServer (server). getSlot ();
+                ServerImpl  s = c. getServer (server);
+                try
+                {
+                    slot = s. getSlot ();
+                }
+                catch (InterruptedException e)
+                {
+                    s. finish ();
+                    throw e;
+                }
                 break;
             }
             catch (SlotException e)

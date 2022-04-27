@@ -67,6 +67,11 @@ public class  ServerImpl
     }
 
 
+    public void  finish ()
+    {
+        mf_rTransport. finish ();
+    }
+
     // Server
     public Slot  getSlot ()
         throws InterruptedException, SlotException

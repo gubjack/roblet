@@ -7,6 +7,7 @@ import org.roblet.client.Logger;
 import org.roblet.server.unit.net.NetUnit;
 
 import  genRob.genControl.client.base.ClientContext;
+import genRob.genControl.client.base.ServerImpl;
 import  genRob.genControl.client.base.ServerMap;
 import  genRob.genControl.client.connect.Name;
 
@@ -229,7 +230,7 @@ public class  Client
      *              vorher sein Unterbrechungssignal (interrupt flag)
      *              gesetzt war
      */
-    public Server  getServer (String servername)
+    public ServerImpl  getServer (String servername)
         throws InterruptedException
     {
         if (mf_rLogger. base)

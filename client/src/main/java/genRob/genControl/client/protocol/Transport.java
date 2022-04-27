@@ -64,7 +64,6 @@ public class  Transport
     private final InvokeOutCraft  mf_rInvokeOutCraft;
 
     // Object
-    @SuppressWarnings("deprecation")
     protected void  finalize ()
     {
         if (mf_rLogger. transport)
@@ -271,7 +270,7 @@ public class  Transport
     }
 
 
-    private void  finish ()
+    public void  finish ()
     {
         if (mf_rLogger. transport)
             mf_rLogger. transport (this, "finish () begin");

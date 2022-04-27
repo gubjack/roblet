@@ -3,7 +3,6 @@
 
 package genRob.genControl.client.base;
 
-import  genRob.genControl.client.Server;
 import  genRob.genControl.client.connect.ConnectContext;
 import  genRob.genControl.client.connect.Connector;
 import  genRob.genControl.client.connect.Name;
@@ -16,7 +15,6 @@ import org.roblet.client.Logger;
  * Encapsulate getting a server representation from an address
  * @author Hagen Stanek
  */
-@SuppressWarnings("deprecation")
 public class  ServerMap
 {
 
@@ -40,7 +38,7 @@ public class  ServerMap
      * @return  Server-Repräsentant
      * @throws InterruptedException  Bei Unterbrechungsanforderung
      */
-    public Server  getServer (Name rName)
+    public ServerImpl  getServer (Name rName)
         throws InterruptedException
     {
         if (mf_rLogger. base)
@@ -83,7 +81,7 @@ public class  ServerMap
      * @throws IOException  Bei Fehlern in der Kommunikation
      * @throws InterruptedException  Bei Unterbrechungsanforderung
      */
-    private Server  connectAndWaitServer (Name rName)
+    private ServerImpl  connectAndWaitServer (Name rName)
         throws IOException, InterruptedException
     {
         if (mf_rLogger. base)
