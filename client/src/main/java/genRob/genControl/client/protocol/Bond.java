@@ -16,12 +16,11 @@ public class  Bond
 {
     private static int  ms_iCount;
 
-    Bond (Bond rBond, TransportContext rTransportContext, Queues rQueues
+    Bond (TransportContext rTransportContext, Queues rQueues
             , ErrorHandler rErrorHandler, Tube rTube
             , SlotCraft rSlotCraft, RunCraft rRunCraft
             , ResourceCraft rResourceCraft
             , InvokeInCraft rInvokeInCraft, InvokeOutCraft rInvokeOutCraft)
-        throws InterruptedException
     {
         mf_rLogger = rTransportContext. mf_rLogger;
 
@@ -30,9 +29,6 @@ public class  Bond
 
         try
         {
-            if (rBond != null)
-                rBond. join ();
-
             mf_rWeakReference_ErrorHandler
                             = new WeakReference<ErrorHandler> (rErrorHandler);
             mf_rTube = rTube;
@@ -123,7 +119,7 @@ public class  Bond
     }
     private boolean  m_bClosed;
 
-    private void  join ()
+    void  join ()
         throws InterruptedException
     {
         if (mf_rLogger. transport)

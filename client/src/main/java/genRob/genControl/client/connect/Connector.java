@@ -41,10 +41,9 @@ public class  Connector
      * create a server representation
      * @return  server representation
      * @throws IOException  in case communication with the server failed
-     * @throws InterruptedException  in case the calling thread is interrupted
      */
     public Server  getServer ()
-        throws IOException, InterruptedException
+        throws IOException
     {
         // Besorge mir eine Socket
         if (mf_rLogger. connect)
@@ -94,7 +93,7 @@ public class  Connector
     }
 
     private Server  connectServer (Socket rSocket)
-        throws IOException, InterruptedException
+        throws IOException
     {
         Tube  rTube = mf_rConnectContext. createTube (rSocket);
 

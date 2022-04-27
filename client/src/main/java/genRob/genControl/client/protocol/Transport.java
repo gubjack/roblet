@@ -106,10 +106,8 @@ public class  Transport
     /**
      * Connect the tranport using a given tube.
      * @param rTube  tube
-     * @throws InterruptedException  in case the calling thread is interrupted
      */
     public void  connect (Tube rTube)
-        throws InterruptedException
     {
         if (mf_rLogger. transport)
             mf_rLogger. transport (this
@@ -120,7 +118,7 @@ public class  Transport
             if (m_rSlotException != null)
                 throw new RuntimeException ("Already closed");
 
-            m_rBond = new Bond (m_rBond, mf_rTransportContext, mf_rQueues
+            m_rBond = new Bond (mf_rTransportContext, mf_rQueues
                                 , this, rTube
                                 , mf_rSlotCraft, mf_rRunCraft
                                 , mf_rResourceCraft
@@ -172,6 +170,8 @@ public class  Transport
             if (mf_rLogger. transport)
                 mf_rLogger. transport (this, "Disconnect present tube");
             disconnect ();
+
+            m_rBond. join ();
 
             if (mf_rLogger. transport)
                 mf_rLogger. transport (this, "Negotiate confirmations");
