@@ -8,6 +8,8 @@ import genRob.genControl.client.protocol.SlotData;
 import  genRob.genControl.client.protocol.Transport;
 import  genRob.genControl.client.server.ExecutionException;
 import  java.lang.reflect.Proxy;
+import java.util.Arrays;
+
 import  org.roblet.Roblet;
 import org.roblet.client.Logger;
 import org.roblet.client.MarshalException;
@@ -124,11 +126,13 @@ class  SlotImpl
             // Werfe die Ausnahme des Roblet-Endes direkt.
             if (t instanceof Exception)
             {
+                Exception  cause = (Exception) t;
+
                 // Füge lokalen Teil zum Stack hinzu
-                appendLocalStack (t);
+                appendLocalStack (cause);
 
                 // Wirf erneut
-                throw (Exception) t;
+                throw cause;
             }
 
             // Falls doch im Server mal ein Fehler verpackt wurde.
@@ -142,36 +146,39 @@ class  SlotImpl
         }
     }
     /**
-     * Fügt dem Stack einer Ausnahme eines Roblets noch die lokalen Anteil
-     * ohne Implementierungsdetails hinzu.
-     * @param t  Ausnahme des Roblets, die angepaßt wird
+     * Append local stack elements to the exception excluding internal details.
+     * @param e  Exception to be adjusted
      */
-    private void  appendLocalStack (Throwable t)
+    private static void  appendLocalStack (Exception e)
     {
-        // Besorge den Stack der Ausnahme des Roblets
-        StackTraceElement[]  aste_t = t. getStackTrace ();
-        int  l = aste_t. length;
+        // Create local stack elements
+        StackTraceElement[]  stackLocal = new Throwable (). getStackTrace ();
 
-        // Erzeuge Ausnahme, um lokalen Stack zu erhalten
-        Throwable  t2 = new Throwable ();
-        t2. fillInStackTrace ();
-        StackTraceElement[]  aste_t2 = t2. getStackTrace ();
-        // Die Länge dieses Stacks reduziert sich um diese Methode und
-        // die von run(), da sie uninteressante Implementierungsdetails
-        // darstellen.
-        int  l2 = aste_t2. length - 2;
+        // Determine number of elements from the local stack
+        int  sizeLocal = stackLocal. length;
+        // We're done if there are not enough elements
+        if (sizeLocal < SPARE_ELEMENTS)
+            return;
 
-        // Erzeuge neuen Stack mit den originalen Elementen und den
-        // lokalen ohne die Implementierungsdetails.
-        StackTraceElement[]  aste_new = new StackTraceElement [l + l2];
-        for (int  i = 0;  i < l;  ++i)
-            aste_new [i] = aste_t [i];
-        for (int  i = l;  i < l + l2;  ++i)
-            aste_new [i] = aste_t2 [(i - l) + 2];
+        // Remove first 3 (internal) elements
+        stackLocal = Arrays. copyOfRange(stackLocal, SPARE_ELEMENTS, sizeLocal);
 
-        // Setze neuen Stack
-        t. setStackTrace (aste_new);
+        // Re-determine number of elements from the local stack
+        sizeLocal = stackLocal. length;
+
+        // Get the original exceptions elements including number thereof
+        StackTraceElement[]  stackException = e. getStackTrace ();
+        int  sizeException = stackException. length;
+
+        // Concatenate new stack from the exception and the callers stack
+        int  sizeNew = sizeException + sizeLocal;
+        StackTraceElement[]  stackNew = Arrays. copyOf(stackException, sizeNew);
+        System. arraycopy (stackLocal, 0, stackNew, sizeException, sizeLocal);
+
+        // Let this be the new stack
+        e. setStackTrace (stackNew);
     }
+    private final static int  SPARE_ELEMENTS = 3;
 
     // Slot
     public Object  obtainProxy (Class<?> clazz)
