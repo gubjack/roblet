@@ -1,6 +1,16 @@
 
 # Changes
 
+## 1
+* Removed
+    * `genRob.genControl.modules.Module3`
+    * `genRob.genControl.modules.Module`
+    * `genRob.genControl.modules.Log`
+    * `genRob.genControl.modules.Registry`
+    * `genRob.genControl.modules.Supervisor`
+    * `genRob.genControl.modules.Slot`
+    * `genRob.genControl.modules.Use`
+
 ## 0.2
 * Sources taken from RDK (Roblet Development Kit) SVN revision 578
 * Change to Java 11 including simplification and update of the POM
