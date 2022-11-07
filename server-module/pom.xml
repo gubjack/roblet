@@ -12,7 +12,7 @@
 
     <groupId>org.roblet</groupId>
     <artifactId>roblet-server-module</artifactId>
-    <version>1</version>
+    <version>1.0.1-SNAPSHOT</version>
 
 
     <dependencies>
