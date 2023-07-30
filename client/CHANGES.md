@@ -1,6 +1,15 @@
 
 # Changes
 
+## 6
+* Introduce `Slot.waitClosed()`
+* Bond creation not interruptable anymore
+* Ensure proper transport cleanup when interrupted during slot creation
+* Adjust appending local stack elements to exceptions thrown on roblet run
+* Commented out XOR treatment of the protocol (in parallel to the server)
+* **Incompatibility** - Change to the byte handling of the protocol.
+  As a result no connection possible to server not having this change as well!
+
 ## 5.1
 * SPDX-License-Identifier: **LGPL-2.1** - [License text](../LICENSE.md)
 * Turned into a **Java module**
