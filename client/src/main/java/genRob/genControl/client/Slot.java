@@ -186,7 +186,7 @@ public interface  Slot
      * von den Roblets dieses Faches aus erreichbar.
      * <P>
      * Zu beachten ist, daß sämtliche Parameter(typen) und Rückgabewerte
-     * serialisiserbar sein müssen.
+     * serialisierbar sein müssen.
      * <P>
      * Der Vorgang kann über {@link #revokeRemote(Object)} wieder rückgängig
      * gemacht werden.

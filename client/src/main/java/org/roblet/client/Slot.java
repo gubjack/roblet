@@ -211,7 +211,7 @@ public class  Slot
     }
 
     /**
-     * Offeres a remote object for the roblet running in the slot in the
+     * Offers a remote object for the roblet running in the slot in the
      * server.
      * @param <REMOTE>  the type of the remote object
      * @param object  remote object
